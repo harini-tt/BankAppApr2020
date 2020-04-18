@@ -19,6 +19,9 @@ namespace BankApp
 
             var myFourthAccount = Bank.CreateAccount("My Loan", "test@test.com", TypeofAccounts.Loan);
             Console.WriteLine($"AN: {myFourthAccount.AccountNumber}, Name: {myFourthAccount.AccountName}, Email: {myFourthAccount.EmailAddress}, B: {myFourthAccount.Balance:C}, CD: {myFourthAccount.CreatedDate}, AT: {myFourthAccount.AccountType}");
+
+            var myFifthAccount = Bank.CreateAccount("My Loan", "test@test.com", TypeofAccounts.Loan);
+            Console.WriteLine($"AN: {myFifthAccount.AccountNumber}, Name: {myFifthAccount.AccountName}, Email: {myFifthAccount.EmailAddress}, B: {myFifthAccount.Balance:C}, CD: {myFifthAccount.CreatedDate}, AT: {myFifthAccount.AccountType}");
         }
     }
 }
