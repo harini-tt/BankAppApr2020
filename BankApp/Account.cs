@@ -3,9 +3,9 @@ namespace BankApp
 {
     enum TypeofAccounts
     {
-        Checking = 101,
+        Checking,
         Saving,
-        CD = 140,
+        CD,
         Loan
     }
 
