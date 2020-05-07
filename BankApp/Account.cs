@@ -29,7 +29,6 @@ namespace BankApp
         #region Constructor
         public Account()
         {
-            AccountNumber = ++lastAccountNumber;
             CreatedDate = DateTime.Now;
         }
 

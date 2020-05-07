@@ -10,33 +10,31 @@ namespace BankApp
         // overriden method: change parents behavior
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost; Initial Catalog=BankApr20; User ID = sa; Password = reallyStrongPwd123;Connect Timeout=30;");
+            optionsBuilder.UseSqlServer(@"Data Source = localhost; User Id =sa; Password=reallyStrongPwd123; Initial Catalog = BankApr20; Integrated Security=True;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>(entity =>
+            modelBuilder.Entity<Account>(e =>
             {
-                entity.ToTable("Accounts");
-                entity.HasKey(a => a.AccountNumber);
-                entity.Property(a => a.AccountNumber)
+                e.ToTable("Accounts");
+                e.HasKey(a => a.AccountNumber);
+                e.Property(a => a.AccountNumber)
                     .ValueGeneratedOnAdd();
 
-                entity.Property(a => a.EmailAddress)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                entity.Property(a => a.AccountName)
+                e.Property(a => a.EmailAddress)
                     .IsRequired()
                     .HasMaxLength(250);
 
-                entity.Property(a => a.AccountType)
-                    .IsRequired();
+                e.Property(a => a.AccountName)
+                    .IsRequired()
+                    .HasMaxLength(150);
             });
-            modelBuilder.Entity<Transaction>(entity =>
+
+            modelBuilder.Entity<Transaction>(e =>
             {
-                entity.ToTable("Transactions");
-                entity.HasKey(t => t.Id);
-                entity.Property(t => t.Id)
+                e.ToTable("Transactions");
+                e.HasKey(t => t.Id);
+                e.Property(t => t.Id)
                     .ValueGeneratedOnAdd();
             });
         }
