@@ -46,19 +46,38 @@ namespace BankApp
 
                     case "2":
                         PrintAllAccounts();
-                        Console.Write("Account Number: ");
-                        var accountNumber = Convert.ToInt32(Console.ReadLine());
-                        Console.Write("Amount to deposit: ");
-                        amount = Convert.ToInt32(Console.ReadLine());
+                        try
+                        {
+                            Console.Write("Account Number: ");
+                            var acctNumber = Convert.ToInt32(Console.ReadLine());
+                            Console.Write("Amount to deposit: ");
+                            amount = Convert.ToInt32(Console.ReadLine());
 
-                        Bank.Deposit(accountNumber, amount);
-                        Console.Write("Deposit successfully completed.");
+                            Bank.Deposit(acctNumber, amount);
+                            Console.Write("Deposit successfully completed.");
+                        }
+                        catch(FormatException)
+                        {
+                            Console.WriteLine("Input is invalid. Please try again.");
+                        }
+                        catch (OverflowException)
+                        {
+                            Console.WriteLine("Input is invalid. Please try again.");
+                        }
+                        catch (ArgumentException ax)
+                        {
+                            Console.WriteLine($"Error - {ax.Message}");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Something went wrong! Please try again.");
+                        }
                         break;
 
                     case "3":
                         PrintAllAccounts();
                         Console.Write("Account Number: ");
-                        accountNumber = Convert.ToInt32(Console.ReadLine());
+                        var accountNumber = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Amount to withdraw: ");
                         amount = Convert.ToInt32(Console.ReadLine());
 

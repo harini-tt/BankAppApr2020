@@ -15,8 +15,6 @@ namespace BankApp
     /// </summary>
     class Account
     {
-        private static int lastAccountNumber = 0;
-
         #region Properties
         public int AccountNumber { get; private set; }
         public string EmailAddress { get; set; }
